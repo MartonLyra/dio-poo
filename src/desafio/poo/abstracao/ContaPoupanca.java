@@ -8,6 +8,12 @@ public class ContaPoupanca extends Conta {
         return saldoConta;
     }
 
+    public ContaPoupanca(int agencia, int numeroConta, double saldoInicial) {
+        super.agencia = agencia;
+        super.numConta = numeroConta;
+        super.saldoConta = saldoInicial;
+    }
+
     @Override
     public void sacarDaConta(double valorSaque) throws SaldoInsuficienteException {
 
