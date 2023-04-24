@@ -2,7 +2,7 @@ package desafio.poo;
 
 import desafio.poo.exceptions.SaldoInsuficienteException;
 
-public class ContaInvestimento extends Conta {
+public class ContaInvestimento extends ContaCorrente {
 
     double valorInvestido = 0;
 
@@ -10,10 +10,8 @@ public class ContaInvestimento extends Conta {
 
 
 
-    public ContaInvestimento(int agencia, int numeroConta, double saldoInicial, double valorInvestido, Boolean baixaAutomaticaInvestimento) {
-        super.agencia = agencia;
-        super.numConta = numeroConta;
-        super.saldoConta = saldoInicial;
+    public ContaInvestimento(int agencia, int numeroConta, double saldoInicial, double limiteAutorizado, double valorInvestido, Boolean baixaAutomaticaInvestimento) {
+        super(agencia, numeroConta, saldoInicial, limiteAutorizado);
         this.valorInvestido = valorInvestido;
         this.baixaAutomaticaInvestimento = baixaAutomaticaInvestimento;
     }
@@ -21,6 +19,7 @@ public class ContaInvestimento extends Conta {
 
     @Override
     public double calcSaldoTotal() {
+
         return saldoConta + valorInvestido;
     }
 
@@ -35,19 +34,18 @@ public class ContaInvestimento extends Conta {
         if ((valorSaque > saldoConta)               // Saque superior ao saldo em conta...
                 && (baixaAutomaticaInvestimento)    // cliente optou por baixa automática
                 && (valorSaque <= (saldoConta + valorInvestido)))  // tem saldo investido disponível para saque
+            // Então, antes de sacar da conta, vamos sacar do investimento:
             sacarInvestimento(valorSaque - saldoConta);
 
-        // Havendo saldo, sacamos:
-        if (saldoConta >= valorSaque)
-            saldoConta -= valorSaque;
-        else
-            throw new SaldoInsuficienteException();
+
+        // Exceto pelo saque no valor do investimento, o saque é o mesmo da Conta Corrente. Portanto, chamamos ContaCorrente.sacarDaConta();
+        super.sacarDaConta(valorSaque);
+
     }
 
     @Override
     public void depositarEmConta(double valorDeposito) {
-        if (valorDeposito > 0)
-            saldoConta += valorDeposito;
+        super.depositarEmConta(valorDeposito);
     }
 
     public void investir(double valorInvestimento) throws SaldoInsuficienteException {

@@ -11,7 +11,7 @@ class ContaInvestimentoTest {
     void calcSaldoTotal() throws SaldoInsuficienteException {
         // Saldo inicial: R$600 ; Investimento: R$800
         // Na conta investimento, o saldoTotal é a soma do saldo mais o valor investido:
-        ContaInvestimento ci1 = new ContaInvestimento(0001, 1234, 600, 800, false);
+        ContaInvestimento ci1 = new ContaInvestimento(0001, 1234, 600, 0, 800, false);
         Assertions.assertEquals(600, ci1.getSaldoConta());
         Assertions.assertEquals(800, ci1.getValorInvestido());
         Assertions.assertEquals(1400, ci1.calcSaldoTotal());
@@ -33,7 +33,7 @@ class ContaInvestimentoTest {
 
         // Saldo inicial: R$600 ; Limite: R$200
         // Na conta corrente, o saldoTotal é a soma do saldo mais o limite pré-autorizado:
-        ContaInvestimento cc1 = new ContaInvestimento(0001, 1234, 600,800, true);
+        ContaInvestimento cc1 = new ContaInvestimento(0001, 1234, 600, 0, 800, true);
         Assertions.assertEquals(1400, cc1.calcSaldoTotal());
 
         // Vamos realizar um saque normal:
@@ -62,7 +62,7 @@ class ContaInvestimentoTest {
 
         // Saldo inicial: R$600 ; Limite: R$200
         // Na conta Investimento, o saldoTotal é a soma do saldo mais o limite pré-autorizado:
-        ContaInvestimento ci1 = new ContaInvestimento(0001, 1234, 600,800, true);
+        ContaInvestimento ci1 = new ContaInvestimento(0001, 1234, 600,0, 800, true);
         Assertions.assertEquals(1400, ci1.calcSaldoTotal());
 
         ci1.depositarEmConta(400d);
@@ -79,7 +79,7 @@ class ContaInvestimentoTest {
 
         // Saldo inicial: R$600 ; Limite: R$200
         // Na conta Investimento, o saldoTotal é a soma do saldo mais o valor investido:
-        ContaInvestimento ci1 = new ContaInvestimento(0001, 1234, 600,800, true);
+        ContaInvestimento ci1 = new ContaInvestimento(0001, 1234, 600,0, 800, true);
         Assertions.assertEquals(1400, ci1.calcSaldoTotal());
 
         // Quando investimos, sacamos da conta e aplicamos no investimento. Portanto, o saldo final não altera:
@@ -99,7 +99,7 @@ class ContaInvestimentoTest {
 
         // Saldo inicial: R$600 ; Valor investido: R$800
         // Na conta investimento, o saldoTotal é a soma do saldo mais o valor investido:
-        ContaInvestimento ci1 = new ContaInvestimento(0001, 1234, 600,800, true);
+        ContaInvestimento ci1 = new ContaInvestimento(0001, 1234, 600,0, 800, true);
         Assertions.assertEquals(1400, ci1.calcSaldoTotal());
 
         // Vamos realizar um saque normal:

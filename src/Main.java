@@ -63,7 +63,7 @@ public class Main {
 
 
         System.out.println("Vamos abrir uma Conta de Investimento com saldo inicial de R$200 e valor já investido de R$1.000. O cliente optou por baixa automática de investimento");
-        ContaInvestimento cInvestimento1 = new ContaInvestimento(1, 1144, 200,  1200, true);
+        ContaInvestimento cInvestimento1 = new ContaInvestimento(1, 1144, 200,  0,1200, true);
         System.out.println("Status da Conta Investimento: " + cInvestimento1);
 
         System.out.println("Vamos depositar R$300 da Conta Investimento");
