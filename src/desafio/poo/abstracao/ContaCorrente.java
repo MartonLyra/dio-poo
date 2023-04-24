@@ -36,7 +36,8 @@ public class ContaCorrente extends Conta  {
 
     @Override
     public void depositarEmConta(double valorDeposito) {
-        saldoConta += valorDeposito;
+        if (valorDeposito > 0)
+            saldoConta += valorDeposito;
     }
 
     @Override
