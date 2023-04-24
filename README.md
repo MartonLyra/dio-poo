@@ -70,7 +70,7 @@ Observe que a classe **[Conta](src/desafio/poo/Conta.java)** possui um método e
 
     public static void transferir (Conta contaOrigem, Conta contaDestino, double valorTransferencia);
 
-Nosso método **transferir** vai chamar o método **sacarDaConta** da conta de origem. E observe que o método **transferir** não precisa conhecer quantos tipos de conta existem (poupança, corrente, investimento) assim como não precisa chamar suas respectivas regras de negócio de cada tipo de conta. Basta chamar o método sacarDaConta e, a depender do objeto instanciado que implementa Conta, esse objeto vai agir conforme suas regras de saque.  
+Nosso método **transferir** vai chamar o método **sacarDaConta** da conta de origem. E observe que o método **transferir** não precisa conhecer quantos tipos de conta existem (poupança, corrente, investimento) assim como não precisa chamar suas respectivas regras de negócio de cada tipo de conta. Basta chamar o método **sacarDaConta** e, a depender do objeto instanciado que implementa [Conta](src/desafio/poo/Conta.java), esse objeto vai agir conforme suas regras de saque.  
 
 Por fim, o método **transferir** vai chamar o método depositar da conta de destino, para concluir a transferência.  
 
