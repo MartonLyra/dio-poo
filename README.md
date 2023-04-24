@@ -39,15 +39,17 @@ No código exemplo, das contas, imagine que um programador desatento realize as 
 
     contaOrigem.saldoConta += 1000;    
     Conta.transferir(contaOrigem, contaDestino, 1000);
-    contaDestino.sacarDaConta(1000;
+    contaDestino.sacarDaConta(1000);
 
     contaOrigem.saldoConta += 1000;    
     Conta.transferir(contaOrigem, contaDestino, 1000);
-    contaDestino.sacarDaConta(1000;  
+    contaDestino.sacarDaConta(1000);  
 
 
 
-No exemplo acima, se a propriedade **saldoConta** não estiver protegida pelo encapsulamento, ele pode realizar as operações acima sem problema para aumentar o saldo da conta sem autorização. Mas, quando mudamos 'saldoConta' para 'private' ou 'protected', o desenvolvedor precisará usar um dos demais métodos para realizar a operação e, consequentemente, manter a integridade dos dados do sistema.
+No exemplo acima, se a propriedade **Conta.saldoConta** não estiver protegida pelo encapsulamento, ele pode realizar as operações sem problema para aumentar o saldo da conta sem autorização.  
+
+Mas, quando mudamos 'saldoConta' para 'private' ou 'protected', o desenvolvedor não mais terá acesso direto a propriedade saldoConta e precisará usar um dos demais métodos, com suas respectivas regras de negócio, para realizar a operação e, consequentemente, manter a integridade dos dados do sistema.
 
 ### Herança:
 
@@ -55,9 +57,9 @@ Permite que você defina uma classe filha que reutiliza (herda), estende ou modi
 
 No nosso exemplo, a [Conta de Investimento](src/desafio/poo/ContaInvestimento.java) herda da [Conta Corrente](src/desafio/poo/ContaCorrente.java). Ou seja, possui várias características de Conta Corrente que não precisam ser reimplementadas como, por exemplo, ter um limite pré-aprovado.
 
-Porém, também pode ter valores investidos. Com isso, temos os novos métodos investir() e sacarInvestimento().
+Porém, também pode ter valores investidos. Com isso, temos os novos métodos **investir()** e **sacarInvestimento()**.
 
-Outro detalhe importante é para o método sacar(), a regra agora é: primeiro consultamos o saldo na conta. Caso seja insuficiente, então verificamos o valor investido. Se não houver saldo na conta, mas houver saldo investido, então chamaremos o sacarInvestimento() para dar baixa e prosseguir com o saque.
+Outro detalhe importante é para o método sacarDaConta(), a regra agora é: primeiro consultamos o saldo na conta. Caso seja insuficiente, então verificamos o valor investido. Se não houver saldo na conta, mas houver saldo investido, então chamaremos o sacarInvestimento() para dar baixa e prosseguir com o saque.
 
 
 ### Polimorfismo:
@@ -66,7 +68,7 @@ Outro detalhe importante é para o método sacar(), a regra agora é: primeiro c
 
 Observe que a classe **[Conta](src/desafio/poo/Conta.java)** possui um método estático **transferir(),** que recebe três parâmetros: a **conta de origem**, a **conta de destino** e o **valor da transferência**.
 
-Nosso método **transferir** vai chamar o método **sacar** da conta de origem. E observe que o método **transferir** não precisa conhecer quantos tipos de conta existem (poupança, corrente, investimento) assim como não precisa chamar suas respectivas regras de negócio de cada tipo de conta. Basta chamar o método sacar e, a depender do objeto que implementa Conta, esse objeto vai agir conforme suas regras de saque.  
+Nosso método **transferir** vai chamar o método **sacarDaConta** da conta de origem. E observe que o método **transferir** não precisa conhecer quantos tipos de conta existem (poupança, corrente, investimento) assim como não precisa chamar suas respectivas regras de negócio de cada tipo de conta. Basta chamar o método sacarDaConta e, a depender do objeto que implementa Conta, esse objeto vai agir conforme suas regras de saque.  
 
 Por fim, o método **transferir** vai chamar o método depositar da conta de destino, para concluir a transferência.  
 
