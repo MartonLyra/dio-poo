@@ -1,10 +1,8 @@
-package tests.desafio.poo.abstracao;
+package tests.desafio.poo;
 
-import desafio.exceptions.SaldoInsuficienteException;
-import desafio.poo.abstracao.ContaPoupanca;
+import desafio.poo.exceptions.SaldoInsuficienteException;
+import desafio.poo.ContaPoupanca;
 import org.junit.jupiter.api.Assertions;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ContaPoupancaTest {
 

@@ -1,4 +1,4 @@
-package desafio.exceptions;
+package desafio.poo.exceptions;
 
 public class SaldoInsuficienteException extends Exception {
 

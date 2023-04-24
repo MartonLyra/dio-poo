@@ -1,6 +1,6 @@
-package desafio.poo.abstracao;
+package desafio.poo;
 
-import desafio.exceptions.SaldoInsuficienteException;
+import desafio.poo.exceptions.SaldoInsuficienteException;
 
 public abstract class Conta {
 
@@ -18,6 +18,7 @@ public abstract class Conta {
     public abstract void sacarDaConta(double valorSaque) throws SaldoInsuficienteException;
 
     public abstract void depositarEmConta(double valorDeposito);
+
 
 
 

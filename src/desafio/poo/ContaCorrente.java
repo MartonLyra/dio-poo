@@ -1,8 +1,8 @@
-package desafio.poo.abstracao;
+package desafio.poo;
 
-import desafio.exceptions.SaldoInsuficienteException;
+import desafio.poo.exceptions.SaldoInsuficienteException;
 
-public class ContaCorrente extends Conta  {
+public class ContaCorrente extends Conta {
 
     double limiteAutorizado = 0;
 

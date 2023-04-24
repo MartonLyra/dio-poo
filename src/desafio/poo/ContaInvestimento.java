@@ -1,6 +1,6 @@
-package desafio.poo.abstracao;
+package desafio.poo;
 
-import desafio.exceptions.SaldoInsuficienteException;
+import desafio.poo.exceptions.SaldoInsuficienteException;
 
 public class ContaInvestimento extends Conta {
 

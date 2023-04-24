@@ -1,9 +1,8 @@
-import desafio.exceptions.SaldoInsuficienteException;
-import desafio.poo.abstracao.Conta;
-import desafio.poo.abstracao.ContaCorrente;
-import desafio.poo.abstracao.ContaPoupanca;
-
-import javax.sound.midi.Soundbank;
+import desafio.poo.exceptions.SaldoInsuficienteException;
+import desafio.poo.Conta;
+import desafio.poo.ContaCorrente;
+import desafio.poo.ContaInvestimento;
+import desafio.poo.ContaPoupanca;
 
 public class Main {
     public static void main(String[] args) {
@@ -56,5 +55,35 @@ public class Main {
             System.out.println("Não é possível sacar R$200 da Conta Corrente - Saldo Insuficiente");
         }
         System.out.println("Status da Conta Corrente: " + cCorrente1);
+
+
+        System.out.println("------------------------------------");
+        System.out.println("");
+        System.out.println("------------------------------------");
+
+
+        System.out.println("Vamos abrir uma Conta de Investimento com saldo inicial de R$200 e valor já investido de R$1.000. O cliente optou por baixa automática de investimento");
+        ContaInvestimento cInvestimento1 = new ContaInvestimento(1, 1144, 200,  1200, true);
+        System.out.println("Status da Conta Investimento: " + cInvestimento1);
+
+        System.out.println("Vamos depositar R$300 da Conta Investimento");
+        cInvestimento1.depositarEmConta(300);
+        System.out.println("Status da Conta Investimento: " + cInvestimento1);
+
+        System.out.println("Vamos sacar R$1.500 da Conta Investimento");
+        try {
+            cInvestimento1.sacarDaConta(1500);
+        } catch (SaldoInsuficienteException e) {
+            System.out.println("Não é possível sacar R$1.500 na Conta Investimento - Saldo Insuficiente");
+        }
+        System.out.println("Status da Conta Investimento: " + cInvestimento1);
+
+        System.out.println("Vamos sacar mais R$200 da Conta Investimento");
+        try {
+            cInvestimento1.sacarDaConta(200);
+        } catch (SaldoInsuficienteException e) {
+            System.out.println("Não é possível sacar R$200 da Conta Investimento - Saldo Insuficiente");
+        }
+        System.out.println("Status da Conta Investimento: " + cInvestimento1);
     }
 }
