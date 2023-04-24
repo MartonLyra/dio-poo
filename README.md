@@ -59,7 +59,7 @@ No nosso exemplo, a [Conta de Investimento](src/desafio/poo/ContaInvestimento.ja
 
 Porém, também pode ter valores investidos. Com isso, temos os novos métodos **investir()** e **sacarInvestimento()**.
 
-Outro detalhe importante é para o método sacarDaConta(), a regra agora é: primeiro consultamos o saldo na conta. Caso seja insuficiente, então verificamos o valor investido. Se não houver saldo na conta, mas houver saldo investido, então chamaremos o sacarInvestimento() para dar baixa e prosseguir com o saque.
+Outro detalhe importante é para o método sacarDaConta(), a regra agora é: caso não haja saldo suficiente, antes de usar o limite, se o cliente optou pela "Baixa automática de investimento", então será feito a baixa do investimento e, apenas o valor remanescente, e necessário, usará do limite da conta.
 
 
 ### Polimorfismo:
