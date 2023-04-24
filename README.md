@@ -14,7 +14,7 @@ São 4 os pilares principais do POO: ABSTRAÇÃO, ENCAPSULAMENTO, HERANÇA E POL
 
 É a habilidade de concentrar-se nos aspectos essenciais de um domínio, ignorando características menos importantes ou acidentais. Nesse contexto, objetos são abstrações de entidades existentes no domínio em questão.
 
-A título de exemplo de abstração, imagine o contexto de contas bancárias onde, no nosso exemplo, teremos 3 tipos de contas: [ContaPoupança](src/desafio/poo/ContaCorrente.java), [ContaCorrente](src/desafio/poo/ContaCorrente.java) e [ContaInvestimento](src/desafio/poo/ContaInvestimento.java).
+A título de exemplo de abstração, imagine o contexto de contas bancárias onde, no nosso exemplo, teremos 3 tipos de contas: [ContaPoupança](src/desafio/poo/ContaPoupanca.java), [ContaCorrente](src/desafio/poo/ContaCorrente.java) e [ContaInvestimento](src/desafio/poo/ContaInvestimento.java).
 
 Como é de imaginar, cada uma das 3 contas possui regras diferentes para um mesmo ato: sacar. Vamos supor as seguintes regras:
 
@@ -25,7 +25,7 @@ Como é de imaginar, cada uma das 3 contas possui regras diferentes para um mesm
 - [Conta Corrente](src/desafio/poo/ContaCorrente.java): nesse caso, a conta pode ter um limite pré-autorizado. Portanto, caso não haja saldo, vamos consultar se há limite pré-autorizado e, caso positivo, se o valor do saque está dentro do saldo + limite pré-autorizado.
 
 
-- [Conta Investimento](src/desafio/poo/ContaInvestimento.java): a Conta de Investimento herda de conta corrente, ou seja, também pode possuir um limite pré-aprovado. Além disso, há o saldo investido. Sendo assim, a regra do saque é: se a conta estiver configurada para "baixa automática do investimento" e não houver saldo em conta iremos consultar o valor investido. Caso haja valor investido e seja suficiente, será feito a baixa e, em seguida vamos chamar o saque da ContaCorrente. Do contrário, lançamos exceção de Saldo Insuficiente.  
+- [Conta Investimento](src/desafio/poo/ContaInvestimento.java): a Conta de Investimento herda de conta corrente, ou seja, também pode possuir um limite pré-aprovado. Além disso, há o saldo investido. Sendo assim, a regra do saque é: se a conta estiver configurada para "baixa automática do investimento" e não houver saldo em conta iremos consultar o valor investido. Caso haja valor investido e seja suficiente, será feito a baixa e, em seguida, vamos chamar o saque da ContaCorrente. Do contrário, lançamos exceção de Saldo Insuficiente.  
 
 
 No exemplo acima, abstração é poder realizar o saque informando apenas o valor do saque sem se preocupar com as regras específicas de cada tipo de conta. Cada conta tem sua regra de negócio específica para o mesmo ato, sacar; Ou seja, estamos abstraindo da classe 'Conta', o código que realizará o saque.
@@ -37,17 +37,17 @@ Encapsular significa esconder a implementação dos objetos. O encapsulamento fa
 No código exemplo, das contas, imagine que um programador desatento realize as seguintes operações:  
 
 
-    conta.sacarDaConta(1000);  
-    conta.saldoConta = 1000;  
-    
-    conta.sacarDaConta(1000);  
-    conta.saldoConta = 1000;  
-    
-    conta.sacarDaConta(1000);  
-    conta.saldoConta = 1000;  
+    contaOrigem.saldoConta += 1000;    
+    Conta.transferir(contaOrigem, contaDestino, 1000);
+    contaDestino.sacarDaConta(1000;
+
+    contaOrigem.saldoConta += 1000;    
+    Conta.transferir(contaOrigem, contaDestino, 1000);
+    contaDestino.sacarDaConta(1000;  
 
 
-No exemplo acima, se a propriedade saldoConta não estiver protegida pelo encapsulamento, ele pode realizar as operações acima sem problema. Mas, quando mudamos 'saldoConta' para 'private' ou 'protected', o desenvolvedor precisará usar um dos demais métodos para realizar a operação e, consequentemente, manter a integridade dos dados do sistema.
+
+No exemplo acima, se a propriedade **saldoConta** não estiver protegida pelo encapsulamento, ele pode realizar as operações acima sem problema para aumentar o saldo da conta sem autorização. Mas, quando mudamos 'saldoConta' para 'private' ou 'protected', o desenvolvedor precisará usar um dos demais métodos para realizar a operação e, consequentemente, manter a integridade dos dados do sistema.
 
 ### Herança:
 
