@@ -37,6 +37,7 @@ public class ContaInvestimento extends Conta {
                 && (valorSaque <= (saldoConta + valorInvestido)))  // tem saldo investido disponível para saque
             sacarInvestimento(valorSaque - saldoConta);
 
+        // Havendo saldo, sacamos:
         if (saldoConta >= valorSaque)
             saldoConta -= valorSaque;
         else

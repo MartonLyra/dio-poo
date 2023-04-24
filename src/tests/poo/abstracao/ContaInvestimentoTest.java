@@ -71,7 +71,7 @@ class ContaInvestimentoTest {
         ci1.depositarEmConta(400d);
         Assertions.assertEquals(1800, ci1.calcSaldoTotal());
 
-        // Vamos tentar depositar um valor negativo - não é para alterar o saldo da conta:
+        // Vamos tentar depositar um valor negativo. Não é para alterar o saldo da conta:
         ci1.depositarEmConta(-200d);
         Assertions.assertEquals(1800, ci1.calcSaldoTotal());
 
