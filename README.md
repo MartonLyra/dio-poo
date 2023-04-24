@@ -59,16 +59,18 @@ No nosso exemplo, a [Conta de Investimento](src/desafio/poo/ContaInvestimento.ja
 
 Porém, também pode ter valores investidos. Com isso, temos os novos métodos **investir()** e **sacarInvestimento()**.
 
-Outro detalhe importante é para o método sacarDaConta(), a regra agora é: caso não haja saldo suficiente, antes de usar o limite, se o cliente optou pela "Baixa automática de investimento", então será feito a baixa do investimento e, apenas o valor remanescente, e necessário, usará do limite da conta.
+Outro detalhe importante é para o método sacarDaConta(), a regra agora é: caso não haja saldo suficiente, antes de usar o limite, se o cliente optou pela "Baixa automática de investimento", então será feito a baixa do investimento e, apenas o valor remanescente, se necessário, usará do limite da conta.
 
 
 ### Polimorfismo:
 
 É Capacidade de um objeto poder ser referenciado de várias formas. Cuidado, polimorfismo não quer dizer que o objeto fica se transformando, muito pelo contrário, um objeto nasce de um tipo e morre daquele tipo, o que pode mudar é a maneira como nos referimos a ele. A capacidade de tratar objetos criados a partir das classes específicas como objetos de uma classe genérica é chamada de polimorfismo.
 
-Observe que a classe **[Conta](src/desafio/poo/Conta.java)** possui um método estático **transferir(),** que recebe três parâmetros: a **conta de origem**, a **conta de destino** e o **valor da transferência**.
+Observe que a classe **[Conta](src/desafio/poo/Conta.java)** possui um método estático **transferir(),** que recebe três parâmetros: a **conta de origem**, a **conta de destino** e o **valor da transferência**:
 
-Nosso método **transferir** vai chamar o método **sacarDaConta** da conta de origem. E observe que o método **transferir** não precisa conhecer quantos tipos de conta existem (poupança, corrente, investimento) assim como não precisa chamar suas respectivas regras de negócio de cada tipo de conta. Basta chamar o método sacarDaConta e, a depender do objeto que implementa Conta, esse objeto vai agir conforme suas regras de saque.  
+    public static void transferir (Conta contaOrigem, Conta contaDestino, double valorTransferencia);
+
+Nosso método **transferir** vai chamar o método **sacarDaConta** da conta de origem. E observe que o método **transferir** não precisa conhecer quantos tipos de conta existem (poupança, corrente, investimento) assim como não precisa chamar suas respectivas regras de negócio de cada tipo de conta. Basta chamar o método sacarDaConta e, a depender do objeto instanciado que implementa Conta, esse objeto vai agir conforme suas regras de saque.  
 
 Por fim, o método **transferir** vai chamar o método depositar da conta de destino, para concluir a transferência.  
 
