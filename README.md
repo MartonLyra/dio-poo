@@ -22,3 +22,23 @@ Como é de imaginar, cada uma das 3 contas possui regras diferentes para um mesm
 - Conta Investimento: já a regra aqui é, se a conta estiver configurada para "baixa automática do investimento", na hora do saque, se não houver saldo em conta, se a opção de "baixa automática" estiver ativa, iremos consultar o valor investido. Caso haja valor investido e seja suficiente, será feito a baixa e, em seguida o saque. Do contrário, lançamos exceção de Saldo Insuficiente.
 
 No exemplo acima, abstração é poder realizar o saque informando apenas o valor do saque sem se preocupar com as regras específicas de cada tipo de conta. Cada conta tem sua regra de negócio específica para o mesmo ato, sacar; Ou seja, estamos abstraindo da classe 'Conta', o código que realizará o saque.
+
+### Encapsulamento:
+
+Encapsular significa esconder a implementação dos objetos. O encapsulamento favorece principalmente dois aspectos de um sistema: a manutenção e a evolução.
+
+No código exemplo, das contas, imagine que um programador desatento realize as seguintes operações:  
+
+
+    conta.sacarDaConta(1000);  
+    conta.saldoConta = 1000;  
+    
+    conta.sacarDaConta(1000);  
+    conta.saldoConta = 1000;  
+    
+    conta.sacarDaConta(1000);  
+    conta.saldoConta = 1000;  
+
+
+No exemplo acima, se a propriedade saldoConta não estiver protegida pelo encapsulamento, ele pode realizar as operações acima sem problema. Mas, no momento em que mudamos 'saldoConta' para 'private' ou 'protected', o desenvolvedor precisará usar um dos demais métodos para realizar a operação e, consequentemente, manter a integridade dos dados do sistema.
+
